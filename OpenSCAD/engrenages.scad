@@ -392,3 +392,17 @@ module roue_dentee_chevron(z = 40, m = 1, alpha = 20, beta = 60, epaisseur = 10,
         {roue_dentee_helicoidale(z, m, alpha, -beta, epaisseur/2, deport);}
     }
 }
+
+// construction d'une crémaillère avec une roue dentée
+
+// création de la crémaillère avec les valeurs par défaut
+cremaillere_3D();
+
+// création de la crémaillère plus longue
+// cremaillere_3D(z = 20);
+
+// roue dentée 
+translate([0, 20, 0]) {
+    roue_dentee_3D(m = 1, epaisseur = 3, deport = 0.8);
+}
+
