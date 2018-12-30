@@ -161,12 +161,16 @@ module cremaillere_2D(z = 10, m = 1, alpha = 20, largeur = 10)
     union()
     {
         translate([0, -largeur, 0])
-        {square([p* (z - 1) + p/2 + 2*hf*tan(alpha), largeur]);}
+        {
+            square([p* (z - 1) + p/2 + 2*hf*tan(alpha), largeur]);
+        }
      
         for(i=[0:z-1])
         {
             translate([p*i, 0, 0])
-            {dent_cremaillere_2D(m, alpha);}
+            {
+                dent_cremaillere_2D(m, alpha);
+            }
         }
     }
 }
@@ -174,7 +178,9 @@ module cremaillere_2D(z = 10, m = 1, alpha = 20, largeur = 10)
 module cremaillere_3D(z = 10, m = 1, alpha = 20, largeur = 10, epaisseur = 3)
 {
     linear_extrude(epaisseur)
-    {cremaillere_2D(z, m, alpha, largeur);}
+    {
+        cremaillere_2D(z, m, alpha, largeur);
+    }
 }
 
 module roue_dentee_2D(z = 10, m = 1, alpha = 20, deport = 0)
@@ -281,7 +287,9 @@ module roue_dentee_2D(z = 10, m = 1, alpha = 20, deport = 0)
 module roue_dentee_3D(z = 20, m = 5, alpha = 20, epaisseur = 2, deport = 0)
 {
     linear_extrude(epaisseur)
-    {roue_dentee_2D(z,m,alpha, deport);}
+    {
+        roue_dentee_2D(z,m,alpha, deport);
+    }
 }
 
 /**************ENGRENAGE HELICOÏDAL**************/
@@ -371,7 +379,9 @@ module roue_dentee_helicoidale(z = 40, m = 1, alpha = 20, beta = 60, epaisseur =
 	angle = epaisseur*gamma/h;
 	
 	linear_extrude(height = epaisseur, twist = angle)
-	{roue_dentee_2D(z, ma, alpha_a, deport);}
+	{
+        roue_dentee_2D(z, ma, alpha_a, deport);
+    }
 }
 
 module roue_dentee_chevron(z = 40, m = 1, alpha = 20, beta = 60, epaisseur = 10, deport = 0)
@@ -389,6 +399,8 @@ module roue_dentee_chevron(z = 40, m = 1, alpha = 20, beta = 60, epaisseur = 10,
     translate([0, 0, epaisseur/2])
     {
         rotate([0, 0, -angle/2])
-        {roue_dentee_helicoidale(z, m, alpha, -beta, epaisseur/2, deport);}
+        {
+            roue_dentee_helicoidale(z, m, alpha, -beta, epaisseur/2, deport);
+        }
     }
 }
